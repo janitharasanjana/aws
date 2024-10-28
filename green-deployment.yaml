@@ -20,6 +20,6 @@ spec:
     spec:
       containers:
         - name: my-app-container
-          image: 339712771390.dkr.ecr.us-east-1.amazonaws.com/ecr1:green 
+          image: 637423209666.dkr.ecr.ap-south-1.amazonaws.com/ecr1:green 
           ports:
             - containerPort: 80
