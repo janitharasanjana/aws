@@ -1,0 +1,25 @@
+# blue-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-blue
+  labels:
+    app: my-app
+    version: blue
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+      version: blue
+  template:
+    metadata:
+      labels:
+        app: my-app
+        version: blue
+    spec:
+      containers:
+        - name: my-app-container
+          image: 339712771390.dkr.ecr.us-east-1.amazonaws.com/ecr1:blue 
+          ports:
+            - containerPort: 80

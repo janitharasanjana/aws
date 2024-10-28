@@ -1,0 +1,25 @@
+# green-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-green
+  labels:
+    app: my-app
+    version: green
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+      version: green
+  template:
+    metadata:
+      labels:
+        app: my-app
+        version: green
+    spec:
+      containers:
+        - name: my-app-container
+          image: 339712771390.dkr.ecr.us-east-1.amazonaws.com/ecr1:green 
+          ports:
+            - containerPort: 80
