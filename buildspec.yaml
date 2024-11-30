@@ -5,24 +5,24 @@ phases:
     commands:
 
       - echo Logging in to Amazon ECR...
-      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 637423209666.dkr.ecr.ap-south-1.amazonaws.com
+      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 891612561172.dkr.ecr.ap-south-1.amazonaws.com
   build:
     commands:
       - echo Building the Docker image...
       - docker build -t ecr1 .
       - echo Tagging the current green image as blue if it exists...
-      - docker pull 637423209666.dkr.ecr.ap-south-1.amazonaws.com/ecr1:green || true
-      - docker tag 637423209666.dkr.ecr.ap-south-1.amazonaws.com/ecr1:green 637423209666.dkr.ecr.ap-south-1.amazonaws.com/ecr1:blue || true
+      - docker pull 891612561172.dkr.ecr.ap-south-1.amazonaws.com/ecr1:green || true
+      - docker tag 891612561172.dkr.ecr.ap-south-1.amazonaws.com/ecr1:green 891612561172.dkr.ecr.ap-south-1.amazonaws.com/ecr1:blue || true
       - echo Tagging the Docker image as green...
-      - docker tag ecr1:latest 637423209666.dkr.ecr.ap-south-1.amazonaws.com/ecr1:green
+      - docker tag ecr1:latest 891612561172.dkr.ecr.ap-south-1.amazonaws.com/ecr1:green
 
 
   post_build:
     commands:
 
       - echo Pushing the Docker image with blue tag to ECR if it exists...
-      - docker push 637423209666.dkr.ecr.ap-south-1.amazonaws.com/ecr1:blue || true
-      - docker push 637423209666.dkr.ecr.ap-south-1.amazonaws.com/ecr1:green
+      - docker push 891612561172.dkr.ecr.ap-south-1.amazonaws.com/ecr1:blue || true
+      - docker push 891612561172.dkr.ecr.ap-south-1.amazonaws.com/ecr1:green
       - echo Writing image definitions file...
       - printf '[{"name":"mywebsite","imageUri":"%s"}]' $REPOSITORY_URI:latest > imagedefinitions.json
 artifacts:
